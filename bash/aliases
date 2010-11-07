@@ -1,0 +1,45 @@
+# Aliases
+alias lsl='ls -lahG'
+
+# Passenger aliases
+# Use this in any RAILS_ROOT dir. That restart.txt file tells mod_rails to restart this app.
+# You'll want to do this when (for example) you install a new plugin.
+alias restart_rails='touch tmp/restart.txt'
+# By default, your app's error log now goes here. Unless you configure your apps otherwise,
+# it's helpful to have an alias to take you to your error log quickly.
+# alias apache_logs='cd /private/var/log/apache2/'
+# You'll be adding to your vhosts configuration everytime you introduce a new Rails app.
+# Might as well make it a shortcut
+alias vhosts='sudo mate /private/etc/apache2/extra/httpd-vhosts.conf'
+# Dito with hosts
+alias hosts='sudo mate /etc/hosts'
+# You'll need to restart apache whenever you make a change to vhosts.
+# You can also click System Preference->Sharing->Web Sharing, but this is quicker.
+alias apache_restart='sudo apachectl graceful'
+
+function start_rails() {
+	new_terminal_tab "cd '$(pwd)'; tail -f log/development.log" 
+	new_terminal_tab "cd '$(pwd)'; script/console"
+	new_terminal_tab "cd '$(pwd)'; mate .; svn status; git status;"
+	new_terminal_tab "cd '$(pwd)'; mysql -uroot"
+	killthin
+	thin start
+}
+
+function dir_search() {
+	grep -rin --exclude="*\.svn*"  "$1" *
+}
+
+alias twd=new_terminal_working_directory
+function new_terminal_working_directory() {
+	new_terminal_tab "cd '$(pwd)'" 
+}
+
+function new_terminal_tab() {
+arch -i386 osascript <<END 
+	tell application "Terminal"
+		tell application "System Events" to tell process "Terminal" to keystroke "t" using command down
+		do script "$1" in first window
+	end tell
+END
+}
