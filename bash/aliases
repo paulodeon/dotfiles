@@ -71,6 +71,7 @@ alias gt='git st'
 alias g='git st'
 alias gig='mate -w .gitignore'
 alias eg='mate .git/config'
+alias gk='gitk --all &'
 # Git clone from GitHub
 function gch() {
   git clone git://github.com/$USER/$1.git
