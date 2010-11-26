@@ -1,7 +1,7 @@
 # Command Enhancements
 
 # Utility
-alias reload='source ~/bin/dotfiles/bash/aliases'
+alias reload='source ~/bin/dotfiles/bash/aliases; source ~/bin/dotfiles/bash/config'
 alias ea='open ~/bin/Dot\ Files.tmproj && reload' # Edit aliases
 
 # Common -- Some are from Damian Conway
@@ -9,11 +9,12 @@ alias a='ls -A' # -A all except literal . ..
 alias la="ls -A -l -G"
 alias c='clear'
 alias cdd='cd -'  # goto last dir cd'ed from
-alias cl='clear; l'
-function cdc() { 
-    cd $1; ls 
-}
-alias cls='clear; ls'
+#These seem to interfere with osx new terminal
+# alias cl='clear; l'
+# function cdc() { 
+#     cd $1; ls 
+# }
+# alias cls='clear; ls'
 alias h='history'
 alias l.='ls -d .[^.]*'
 alias l='ls -lhGt'  # -l long listing, most recent first
@@ -102,6 +103,11 @@ function new-git() {
   git config push.default current
 }
 
+function grba() {
+	git branch -d $1
+	git push origin :$1
+}
+
 
 # Passenger aliases
 # Use this in any RAILS_ROOT dir. That restart.txt file tells mod_rails to restart this app.
@@ -114,15 +120,35 @@ alias restart_rails='touch tmp/restart.txt'
 # Might as well make it a shortcut
 alias vhosts='sudo mate /private/etc/apache2/extra/httpd-vhosts.conf'
 # Dito with hosts
-alias hosts='sudo mate /etc/hosts'
+alias hosts='mate /etc/hosts'
 # You'll need to restart apache whenever you make a change to vhosts.
 # You can also click System Preference->Sharing->Web Sharing, but this is quicker.
 alias apache_restart='sudo apachectl graceful'
 
+function new_site() {
+	sudo sh -c "echo 127.0.0.1 $1 >> /etc/hosts"
+	sudo sh -c "(cat - << EOF) >> /private/etc/apache2/extra/httpd-vhosts.conf
+<VirtualHost *:80>
+	ServerName $1
+	DocumentRoot \"/Users/paulodeon/Sites/$1\"
+
+	<Directory \"/Users/paulodeon/Sites/$1\">
+		Options Indexes FollowSymLinks
+		AllowOverride All 
+		Order allow,deny
+		Allow from all
+	</Directory>
+</VirtualHost>
+EOF"
+
+ln -s "`echo "$2" | sed -e "s#~#$HOME#g"`" ~/Sites/$1
+apache_restart
+}
+
 function start_rails() {
 	new_terminal_tab "cd '$(pwd)'; tail -f log/development.log" 
 	new_terminal_tab "cd '$(pwd)'; script/console"
-	new_terminal_tab "cd '$(pwd)'; mate .; svn status; git status;"
+	new_terminal_tab "cd '$(pwd)'; mate .; svn status; g;"
 	new_terminal_tab "cd '$(pwd)'; mysql -uroot"
 	killthin
 	thin start
