@@ -1,5 +1,7 @@
 # Command Enhancements
 
+# http://blog.urfix.com/25-sick-linux-commands/
+
 # Utility
 alias reload='source ~/bin/dotfiles/bash/aliases; source ~/bin/dotfiles/bash/config'
 alias ea='open ~/bin/Dot\ Files.tmproj && reload' # Edit aliases
@@ -50,6 +52,7 @@ alias tu='top -o cpu' # cpu
 alias tm='top -o vsize' # memory
 
 # Git
+#See http://mislav.uniqpath.com/2010/07/git-tips/
 alias ungit="find . -name '.git' -exec rm -rf {} \;"
 alias ga='git add'
 alias gb='git br'
@@ -124,6 +127,7 @@ alias hosts='mate /etc/hosts'
 # You'll need to restart apache whenever you make a change to vhosts.
 # You can also click System Preference->Sharing->Web Sharing, but this is quicker.
 alias apache_restart='sudo apachectl graceful'
+alias restart_apache='sudo apachectl graceful'
 
 function new_site() {
 	sudo sh -c "echo 127.0.0.1 $1 >> /etc/hosts"
@@ -139,17 +143,22 @@ function new_site() {
 		Allow from all
 	</Directory>
 </VirtualHost>
-EOF"
 
-ln -s "`echo "$2" | sed -e "s#~#$HOME#g"`" ~/Sites/$1
+EOF"
+dir=`echo "$2" | sed -e "s#~#$HOME#g"`
+ln -s "$dir" ~/Sites/$1
 apache_restart
+open http://$1
+cd "$dir"
+open .
+mate .
 }
 
 function start_rails() {
 	new_terminal_tab "cd '$(pwd)'; tail -f log/development.log" 
 	new_terminal_tab "cd '$(pwd)'; script/console"
-	new_terminal_tab "cd '$(pwd)'; mate .; svn status; g;"
 	new_terminal_tab "cd '$(pwd)'; mysql -uroot"
+	new_terminal_tab "cd '$(pwd)'; mate .; svn status; g"
 	killthin
 	thin start
 }
@@ -170,4 +179,9 @@ arch -i386 osascript <<END
 		do script "$1" in first window
 	end tell
 END
+}
+
+function get_iplayer() {
+	/usr/local/bin/get_iplayer/get_iplayer --pid $1 --modes=flashhigh2
+	
 }
