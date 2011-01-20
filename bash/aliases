@@ -63,9 +63,17 @@ alias gca='git commit -v -a'
 function gg() { 
     git commit -v -a -m "$*"
 }
-alias glg='git lg'
+function glg() {
+	if [ -z "$1" ]; then
+		git lg
+	else
+		git lg -n$1
+	fi
+}
+# alias glg='git lg'
 alias gco='git checkout'
 alias gd='git diff'
+alias gdmt='git diff | mate'
 alias gdm='git diff master'
 
 alias gpl='git pull'
@@ -81,6 +89,18 @@ alias g='git st'
 alias gig='mate -w .gitignore'
 alias eg='mate .git/config'
 
+function gs() {
+	git show $1
+}
+
+# alias gphm='git push heroku master'
+function gphm() {
+	if [ -z "$1" ]; then
+		git push heroku master
+	else
+		git push heroku +$1:master
+	fi
+}
 alias gk='gitk --all &'
 # Git clone from GitHub
 function gch() {
