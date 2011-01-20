@@ -3,6 +3,7 @@
 . ~/bin/dotfiles/bash/env
 . ~/bin/dotfiles/bash/config
 . ~/bin/dotfiles/bash/aliases
+. ~/bin/dotfiles/bash/aliases.git
 . ~/bin/dotfiles/bash/completions
 
 #RVM
