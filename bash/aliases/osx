@@ -15,3 +15,9 @@ END
 # Finder
 alias o='open . &'
 alias ff='open -a Firefox'
+
+# Textmate
+function tmt() {
+	touch $1
+	mate $1
+}
