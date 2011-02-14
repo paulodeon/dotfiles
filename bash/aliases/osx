@@ -1,0 +1,17 @@
+alias twd=new_terminal_working_directory
+function new_terminal_working_directory() {
+	new_terminal_tab "cd '$(pwd)'" 
+}
+
+function new_terminal_tab() {
+arch -i386 osascript <<END 
+	tell application "Terminal"
+		tell application "System Events" to tell process "Terminal" to keystroke "t" using command down
+		do script "$1" in first window
+	end tell
+END
+}
+
+# Finder
+alias o='open . &'
+alias ff='open -a Firefox'

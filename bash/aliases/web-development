@@ -1,0 +1,50 @@
+# Passenger aliases
+# Use this in any RAILS_ROOT dir. That restart.txt file tells mod_rails to restart this app.
+# You'll want to do this when (for example) you install a new plugin.
+alias restart_rails='touch tmp/restart.txt'
+# By default, your app's error log now goes here. Unless you configure your apps otherwise,
+# it's helpful to have an alias to take you to your error log quickly.
+# alias apache_logs='cd /private/var/log/apache2/'
+# You'll be adding to your vhosts configuration everytime you introduce a new Rails app.
+# Might as well make it a shortcut
+alias vhosts='sudo mate /private/etc/apache2/extra/httpd-vhosts.conf'
+# Dito with hosts
+alias hosts='mate /etc/hosts'
+# You'll need to restart apache whenever you make a change to vhosts.
+# You can also click System Preference->Sharing->Web Sharing, but this is quicker.
+alias apache_restart='sudo apachectl graceful'
+alias restart_apache='sudo apachectl graceful'
+
+function new_site() {
+	sudo sh -c "echo 127.0.0.1 $1 >> /etc/hosts"
+	sudo sh -c "(cat - << EOF) >> /private/etc/apache2/extra/httpd-vhosts.conf
+<VirtualHost *:80>
+	ServerName $1
+	DocumentRoot \"/Users/paulodeon/Sites/$1\"
+
+	<Directory \"/Users/paulodeon/Sites/$1\">
+		Options Indexes FollowSymLinks
+		AllowOverride All 
+		Order allow,deny
+		Allow from all
+	</Directory>
+</VirtualHost>
+
+EOF"
+dir=`echo "$2" | sed -e "s#~#$HOME#g"`
+ln -s "$dir" ~/Sites/$1
+apache_restart
+open http://$1
+cd "$dir"
+open .
+mate .
+}
+
+function start_rails() {
+	new_terminal_tab "cd '$(pwd)'; tail -f log/development.log" 
+	new_terminal_tab "cd '$(pwd)'; script/console"
+	new_terminal_tab "cd '$(pwd)'; mysql -uroot"
+	new_terminal_tab "cd '$(pwd)'; mate .; svn status; g"
+	killthin
+	thin start
+}

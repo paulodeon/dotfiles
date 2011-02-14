@@ -1,0 +1,18 @@
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[user]
+	name = Paul Odeon
+	email = mail@paulodeon.com
+[core]
+	editor = mate -w
+	excludesfile = ~/.gitignore
+[alias]
+  co = checkout
+  st = status -sb
+  ci = commit
+  br = branch -a -v
+  df = !git diff | mate
+  lg = log --oneline --decorate --graph
+  pr = pull --rebase
