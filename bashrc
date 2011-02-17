@@ -2,7 +2,7 @@
 # http://www.thegeekstuff.com/2008/10/execution-sequence-for-bash_profile-bashrc-bash_login-profile-and-bash_logout/
 . ~/bin/dotfiles/bash/env
 . ~/bin/dotfiles/bash/config
-. ~/bin/dotfiles/bash/completions
+#. ~/bin/dotfiles/bash/completions
 
 for f in ~/bin/dotfiles/bash/aliases/*; do 
 	source $f; 
