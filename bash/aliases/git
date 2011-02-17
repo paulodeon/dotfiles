@@ -39,6 +39,14 @@ function gs() {
 	git show $1
 }
 
+#Git stash
+gsl='git stash list'
+alias gssh='git stash show'
+alias gsd='git stash drop'
+alias gsp='git stash pop'
+alias gss='git stash save'
+
+
 # alias gphm='git push heroku master'
 function gphm() {
 	if [ -z "$1" ]; then
