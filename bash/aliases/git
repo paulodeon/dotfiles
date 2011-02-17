@@ -47,7 +47,7 @@ function gphm() {
 		git push heroku +$1:master
 	fi
 }
-alias gk='gitk --all &'
+alias gk='$(/usr/bin/wish > /dev/null 2>&1 $(which gitk) --all &)'
 # Git clone from GitHub
 function gch() {
   git clone git://github.com/$USER/$1.git
