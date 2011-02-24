@@ -40,7 +40,7 @@ function gs() {
 }
 
 #Git stash
-gsl='git stash list'
+alias gsl='git stash list'
 alias gssh='git stash show'
 alias gsd='git stash drop'
 alias gsp='git stash pop'
