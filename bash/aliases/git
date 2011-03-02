@@ -21,7 +21,7 @@ function glg() {
 		if is_integer $1; then
 			git log --oneline --decorate --graph -n$1 $2
 		else
-			git log --oneline --decorate --graph $1
+			git log --oneline --decorate --graph $@
 		fi
 	fi
 }
