@@ -16,10 +16,19 @@ function gg() {
 
 function glg() {
 	if [ -z "$1" ]; then
-		git lg
+		git log --oneline --decorate --graph 
 	else
-		git lg -n$1
+		if is_integer $1; then
+			git log --oneline --decorate --graph -n$1 $2
+		else
+			git log --oneline --decorate --graph $1
+		fi
 	fi
+}
+
+function is_integer() {
+    printf "%d" $1 > /dev/null 2>&1
+    return $?
 }
 
 alias gco='git checkout'
