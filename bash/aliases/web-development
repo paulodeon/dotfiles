@@ -48,3 +48,24 @@ function start_rails() {
 	killthin
 	thin start
 }
+
+function killgems() {
+	if ps aux | grep '[r]uby /usr/local/bin/gem'
+	then
+		kill -9 `ps aux | grep '[r]uby /usr/local/bin/gem' | awk '{ print $2 }'`
+	fi
+}
+
+function killthin() {
+if ps aux | grep '[t]hin start'
+then
+	kill -9 `ps aux | grep '[t]hin start' | awk '{ print $2 }'`
+fi
+}
+
+function killrails() {
+if ps aux | grep '[r]uby script/server'
+then
+	kill -9 `ps aux | grep '[r]uby script/server' | awk '{ print $2 }'`
+fi
+}
