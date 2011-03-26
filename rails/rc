@@ -1,0 +1,46 @@
+# For Rails < 3
+if ENV.include?('RAILS_ENV')
+  require 'logger'
+  
+  def show_sql
+    set_logger STDOUT
+  end
+  
+  def hide_sql
+    set_logger nil
+  end
+
+  def set_logger(stream, colorize=true)
+    ActiveRecord::Base.logger = ::Logger.new(stream)
+    ActiveRecord::Base.clear_all_connections!
+    ActiveRecord::Base.colorize_logging = colorize
+  end
+  
+  def sql(query)
+    ActiveRecord::Base.connection.select_all(query)
+  end
+  
+  if ENV['RAILS_ENV'] == 'test'
+    require 'test/test_helper'
+  end
+  
+# For Rails 3
+elsif defined?(Rails) && !Rails.env.nil?
+  def toggle_sql
+    if ActiveRecord::Base.logger
+      set_logger nil and return false
+    else
+      set_logger Logger.new(STDOUT) and return true
+    end
+  end
+
+  def set_logger(logger)
+    ActiveRecord::Base.logger = logger
+    ActiveRecord::Base.clear_active_connections!
+  end
+  set_logger nil # start with the normal logger
+  
+  if Rails.env == 'test'
+    require 'test/test_helper'
+  end
+end
