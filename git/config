@@ -16,3 +16,5 @@
   df = !git diff | mate
   lg = log --oneline --decorate --graph
   pr = pull --rebase
+[github]
+	user = paulodeon

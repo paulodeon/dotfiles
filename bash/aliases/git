@@ -58,9 +58,7 @@ alias gsd='git stash drop'
 alias gsp='git stash pop'
 alias gss='git stash save'
 
-
-# alias gphm='git push heroku master'
-function gphm() {
+function hadouken() {
 	if [ -z "$1" ]; then
 		git push heroku master
 	else
