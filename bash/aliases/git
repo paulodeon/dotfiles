@@ -59,10 +59,14 @@ alias gsp='git stash pop'
 alias gss='git stash save'
 
 function hadouken() {
-	if [ -z "$1" ]; then
-		git push heroku master
+	if [ -z "$2" ]; then
+		if [ -z "$1" ]; then
+			git push production master
+		else
+			git push production +$1:master
+		fi
 	else
-		git push heroku +$1:master
+		git push $2 +$1:master
 	fi
 }
 alias gk='$(/usr/bin/wish > /dev/null 2>&1 $(which gitk) --all &)'
