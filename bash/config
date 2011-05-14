@@ -41,7 +41,7 @@ BWHITE='\e[47m'
 # Colours
 # export TERM=xterm-color
 # export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
-# export CLICOLOR=1
+export CLICOLOR=1
 # export COLOR_NC='\e[0m' # No Color
 # export COLOR_WHITE='\e[1;37m'
 # export COLOR_BLACK='\e[0;30m'

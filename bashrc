@@ -1,10 +1,13 @@
 # See this article for explanation of order of execution
 # http://www.thegeekstuff.com/2008/10/execution-sequence-for-bash_profile-bashrc-bash_login-profile-and-bash_logout/
-. ~/bin/dotfiles/bash/env
-. ~/bin/dotfiles/bash/config
-#. ~/bin/dotfiles/bash/completions
 
-for f in ~/bin/dotfiles/bash/aliases/*; do 
+INSTALL_PATH=/usr/local/bin/dotfiles
+
+. $INSTALL_PATH/bash/env
+. $INSTALL_PATH/bash/config
+#. $INSTALL_PATH/bash/completions
+
+for f in $INSTALL_PATH/bash/aliases/*; do 
 	source $f; 
 done
 

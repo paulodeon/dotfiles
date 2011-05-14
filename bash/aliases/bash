@@ -2,8 +2,8 @@
 # http://blog.urfix.com/25-sick-linux-commands/
 
 # Utility
-alias reload='source ~/bin/dotfiles/bashrc'
-alias ea='open ~/bin/Dot\ Files.tmproj && reload' # Edit aliases
+alias reload='source $INSTALL_PATH/bashrc'
+alias ea='mate $INSTALL_PATH' # Edit aliases
 
 # Common -- Some are from Damian Conway
 alias a='ls -A' # -A all except literal . ..

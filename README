@@ -16,3 +16,5 @@ Also need to edit .bashrc and .bash_profile
 if [ -f "$HOME/.bashrc" ]; then
   . "$HOME/.bashrc"
 fi
+
+Copy ssh/config and .ec2 across
