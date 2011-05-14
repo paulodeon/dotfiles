@@ -18,3 +18,5 @@ if [ -f "$HOME/.bashrc" ]; then
 fi
 
 Copy ssh/config and .ec2 across
+
+For fastscripts create osx alias (symlinks don't work) ~/Library/Scripts -> /usr/local/bin/dotfiles/osx/Scripts
