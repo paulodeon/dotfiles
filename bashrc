@@ -4,6 +4,7 @@
 INSTALL_PATH=/usr/local/bin/dotfiles
 
 . $INSTALL_PATH/bash/env
+. $INSTALL_PATH/bash/private-env
 . $INSTALL_PATH/bash/config
 #. $INSTALL_PATH/bash/completions
 
