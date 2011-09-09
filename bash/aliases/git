@@ -17,12 +17,12 @@ function gg() {
 
 function glg() {
 	if [ -z "$1" ]; then
-		git log --oneline --decorate --graph 
+		git log --oneline --decorate --graph --date=short
 	else
 		if is_integer $1; then
-			git log --oneline --decorate --graph -n$1 $2
+			git log --oneline --decorate --graph --date=short -n$1 $2
 		else
-			git log --oneline --decorate --graph $@
+			git log --oneline --decorate --graph --date=short $@
 		fi
 	fi
 }
@@ -39,6 +39,7 @@ alias gdmt='git diff HEAD | mate'
 alias gpl='git pull'
 alias gpr='git pull --rebase'
 alias gps='git push'
+alias gpf='git push -f'
 alias gf='git fetch'
 
 alias gst='git st'
@@ -51,6 +52,8 @@ alias eg='mate .git/config'
 function gs() {
 	git show $1
 }
+
+alias grm='git rm'
 
 #Git stash
 alias gsl='git stash list'
@@ -75,6 +78,7 @@ alias gk='$(/usr/bin/wish > /dev/null 2>&1 $(which gitk) --all &)'
 function gch() {
   git clone git://github.com/$USER/$1.git
 }
+alias gcl='git clone'
 
 # Setup a tracking branch from [remote] [branch_name]
 function gbt() { 

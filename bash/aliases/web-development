@@ -69,3 +69,5 @@ then
 	kill -9 `ps aux | grep '[r]uby script/server' | awk '{ print $2 }'`
 fi
 }
+
+alias cdp='cap deploy'
