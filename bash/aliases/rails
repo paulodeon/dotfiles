@@ -1,0 +1,4 @@
+alias be='bundle exec'
+alias bek='bundle exec rake'
+alias bekdm='bundle exec rake db:migrate'
+alias bekjw='bundle exec rake jobs:work'
