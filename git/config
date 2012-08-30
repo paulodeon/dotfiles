@@ -6,7 +6,7 @@
 	name = Paul Odeon
 	email = mail@paulodeon.com
 [core]
-	editor = mate -w
+	editor = mvim -f
 	excludesfile = ~/.gitignore
 	quotepath = false
 [alias]

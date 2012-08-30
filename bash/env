@@ -3,9 +3,9 @@ export PATH="/usr/local/mysql/bin:/usr/local/bin:/usr/local/sbin:$PATH"
 export MANPATH="/usr/local/man:$MANPATH"
 
 # Textmate commands
-export EDITOR="mate -w"
-export CVSEDITOR="mate -w"
-export SVN_EDITOR="mate -w"
+export EDITOR="mvim -f"
+export CVSEDITOR="mvim -f"
+export SVN_EDITOR="mvim -f"
 
 # EC2 
 export EC2_HOME=~/.ec2

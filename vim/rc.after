@@ -1,0 +1,3 @@
+color Herald
+
+let g:Powerline_symbols = 'fancy'

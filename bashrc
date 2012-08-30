@@ -1,7 +1,7 @@
 # See this article for explanation of order of execution
 # http://www.thegeekstuff.com/2008/10/execution-sequence-for-bash_profile-bashrc-bash_login-profile-and-bash_logout/
 
-INSTALL_PATH=/usr/local/bin/dotfiles
+INSTALL_PATH=~/Code/dotfiles
 
 . $INSTALL_PATH/bash/env
 . $INSTALL_PATH/bash/private-env
