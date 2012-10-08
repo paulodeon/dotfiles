@@ -16,6 +16,8 @@ ln -s $dir/ssh/config ~/.ssh/config
 ln -s $dir/irb/rc ~/.irbrc
 ln -s $dir/rails/rc ~/.railsrc
 
+touch $dir/bash/private-env
+
 # Could be good to add this instead of the below https://gist.github.com/3320963
 echo ". $dir/bashrc" >> ~/.bashrc 
 
