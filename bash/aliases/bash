@@ -3,7 +3,7 @@
 
 # Utility
 alias reload='source $INSTALL_PATH/bashrc'
-alias ea='$EDITOR $INSTALL_PATH' # Edit aliases
+alias ea='mate $INSTALL_PATH' # Edit aliases
 
 # Common -- Some are from Damian Conway
 alias a='ls -A' # -A all except literal . ..

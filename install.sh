@@ -8,8 +8,6 @@ rm ~/.gitk
 rm ~/.ssh/config
 rm ~/.irbrc
 rm ~/.railsrc
-rm ~/.vimrc.before
-rm ~/.vimrc.after
 
 ln -s $dir/git/config ~/.gitconfig
 ln -s $dir/git/ignore ~/.gitignore
@@ -17,8 +15,6 @@ ln -s $dir/git/gitk ~/.gitk
 ln -s $dir/ssh/config ~/.ssh/config
 ln -s $dir/irb/rc ~/.irbrc
 ln -s $dir/rails/rc ~/.railsrc
-ln -s $dir/vim/rc.before ~/.vimrc.before
-ln -s $dir/vim/rc.after ~/.vimrc.after
 
 # Could be good to add this instead of the below https://gist.github.com/3320963
 echo ". $dir/bashrc" >> ~/.bashrc 
