@@ -26,7 +26,7 @@ set guioptions=aiAe
 "  :set sw=2
 "endif
 
-map <silent><F3> :NEXTCOLOR<cr> 
-map <silent><F2> :PREVCOLOR<cr>
-
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
+"map <D-t> CtrlPMixed
+
+
