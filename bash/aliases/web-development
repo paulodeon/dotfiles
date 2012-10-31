@@ -71,3 +71,12 @@ fi
 }
 
 alias cdp='cap deploy'
+
+function sitelink() {
+	if [ $# -eq 0 ]
+	  then
+	    echo "Usage: sitelink code/folder site/folder"
+		return
+	fi
+	ln -s $1 $2
+}
