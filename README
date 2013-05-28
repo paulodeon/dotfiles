@@ -6,6 +6,7 @@ Need to create a script to create symbolic links, but until then here are the on
 ~/.ssh/config -> ~/bin/dotfiles/ssh/config
 ~/.irbrc -> ~/bin/dotfiles/irb/rc
 ~/.railsrc -> ~/bin/dotfiles/rails/rc
+~/.gemrc -> ~/bin/dotfiles/gem/rc
 
 Also need to edit .bashrc and .bash_profile
 

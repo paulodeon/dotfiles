@@ -31,6 +31,8 @@ function take() {
     cd "$1" 
 }
 
+alias reenter="cd .. && cd -"
+
 alias e='exit'
 alias k9="killall -9"
 function killnamed () { 

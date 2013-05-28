@@ -34,7 +34,7 @@ function is_integer() {
 
 alias gco='git checkout'
 alias gd='git diff HEAD'
-alias gdmt='git diff HEAD | mate'
+alias gdmt='git diff HEAD | subl &'
 
 alias gpl='git pull'
 alias gpr='git pull --rebase'

@@ -8,6 +8,7 @@ rm ~/.gitk
 rm ~/.ssh/config
 rm ~/.irbrc
 rm ~/.railsrc
+rm ~/.gemrc
 
 ln -s $dir/git/config ~/.gitconfig
 ln -s $dir/git/ignore ~/.gitignore
@@ -15,6 +16,7 @@ ln -s $dir/git/gitk ~/.gitk
 ln -s $dir/ssh/config ~/.ssh/config
 ln -s $dir/irb/rc ~/.irbrc
 ln -s $dir/rails/rc ~/.railsrc
+ln -s $dir/gem/rc ~/.gemrc
 
 touch $dir/bash/private-env
 

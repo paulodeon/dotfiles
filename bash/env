@@ -1,5 +1,5 @@
 # Path commands
-export PATH="/usr/local/mysql/bin:/usr/local/bin:/usr/local/sbin:/usr/local/heroku/bin:$PATH"
+export PATH="/usr/local/share/npm/bin:/usr/local/mysql/bin:/usr/local/bin:/usr/local/sbin:/usr/local/heroku/bin:$PATH"
 export MANPATH="/usr/local/man:$MANPATH"
 
 # Textmate commands
