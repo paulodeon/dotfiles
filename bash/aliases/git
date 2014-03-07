@@ -11,9 +11,15 @@ alias gca='git commit -v -a'
 alias gcam='git commit --amend'
 
 # Commit pending changes and quote all args as message
-function gg() { 
+function gg() {
     git commit -v -a -m "$*"
 }
+
+# As above, except don't add
+function gc() {
+    git commit -v -m "$*"
+}
+#Doesn't work as git must take files as arguments
 
 function glg() {
 	if [ -z "$1" ]; then
@@ -46,8 +52,8 @@ alias gst='git st'
 alias gt='git st'
 alias g='git st'
 
-alias gig='mate -w .gitignore'
-alias eg='mate .git/config'
+alias gig='subl -w .gitignore'
+alias eg='subl .git/config'
 
 function gs() {
 	git show $1
@@ -81,13 +87,13 @@ function gch() {
 alias gcl='git clone'
 
 # Setup a tracking branch from [remote] [branch_name]
-function gbt() { 
-  git branch --track $2 $1/$2 && git checkout $2 
+function gbt() {
+  git branch --track $2 $1/$2 && git checkout $2
 }
 # Quickly clobber a file and checkout
-function grf() { 
+function grf() {
   rm $1
-  git checkout $1 
+  git checkout $1
 }
 # Call from inside an initialized Git repo, with the name of the repo.
 function new-git() {

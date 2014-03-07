@@ -6,7 +6,7 @@
 	name = Paul Odeon
 	email = mail@paulodeon.com
 [core]
-	editor = mate -w
+	editor = subl -w
 	excludesfile = ~/.gitignore
 	quotepath = false
 [alias]
@@ -14,7 +14,7 @@
   st = status -sb
   ci = commit
   br = branch -a -v
-  df = !git diff | mate
+  df = !git diff | subl
   lg = log --oneline --decorate --graph
   pr = pull --rebase
   # see http://pyrtsa.posterous.com/aligning-your-git-logs

@@ -3,6 +3,6 @@ export PATH="/usr/local/share/npm/bin:/usr/local/mysql/bin:/usr/local/bin:/usr/l
 export MANPATH="/usr/local/man:$MANPATH"
 
 # Textmate commands
-export EDITOR="mate -w"
-export CVSEDITOR="mate -w"
-export SVN_EDITOR="mate -w"
+export EDITOR="subl -w"
+export CVSEDITOR="subl -w"
+export SVN_EDITOR="subl -w"

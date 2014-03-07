@@ -7,13 +7,19 @@ alias restart_rails='touch tmp/restart.txt'
 # alias apache_logs='cd /private/var/log/apache2/'
 # You'll be adding to your vhosts configuration everytime you introduce a new Rails app.
 # Might as well make it a shortcut
-alias vhosts='sudo mate /private/etc/apache2/extra/httpd-vhosts.conf'
+alias vhosts='sudo subl /private/etc/apache2/extra/httpd-vhosts.conf'
 # Dito with hosts
-alias hosts='mate /etc/hosts'
+alias hosts='subl /etc/hosts'
 # You'll need to restart apache whenever you make a change to vhosts.
 # You can also click System Preference->Sharing->Web Sharing, but this is quicker.
 alias apache_restart='sudo apachectl graceful'
 alias restart_apache='sudo apachectl graceful'
+
+function prodep() {
+	gpr
+	gps
+	cap production deploy:migrations
+}
 
 function new_site() {
 	sudo sh -c "echo 127.0.0.1 $1 >> /etc/hosts"
@@ -37,7 +43,7 @@ apache_restart
 open http://$1
 cd "$dir"
 open .
-mate .
+subl .
 }
 
 function start_rails() {
@@ -79,4 +85,17 @@ function sitelink() {
 		return
 	fi
 	ln -s $1 $2
+}
+
+function herokudbpull() {
+	if [ -z "$1" ]; then
+		local HEROKU_ARGS=""
+	else
+		local HEROKU_ARGS=" --app $1" 
+	fi
+
+	LOCAL_DB_NAME=`ruby -e 'require "yaml"; print YAML.load_file("config/database.yml")["development"]["database"]'`
+	heroku pgbackups:capture --expire $HEROKU_ARGS
+	curl -o latest.dump `heroku pgbackups:url $HEROKU_ARGS`
+	pg_restore --verbose --clean --no-acl --no-owner -U postgres -d $LOCAL_DB_NAME latest.dump
 }

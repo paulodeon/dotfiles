@@ -14,3 +14,7 @@ done
 
 #RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+
+PATH=$HOME/.rvm/bin:$PATH # Add RVM to PATH for scripting
+
+PATH=$HOME/Library/Trigger\ Toolkit:$PATH # Add Forge to path
