@@ -7,7 +7,7 @@
 	email = mail@paulodeon.com
 [core]
 	editor = subl -w
-	excludesfile = ~/.gitignore
+	excludesfile = /Users/paulodeon/.gitignore
 	quotepath = false
 [alias]
   co = checkout
@@ -31,3 +31,9 @@
 [heroku]
 [heroku]
 	account = personal
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
