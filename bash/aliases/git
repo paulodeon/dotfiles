@@ -3,16 +3,20 @@ alias ungit="find . -name '.git' -exec rm -rf {} \;"
 
 alias ga='git add'
 alias gaa='git add .'
-
 alias gb='git br'
 alias gba='git branch -a'
-alias gc='git commit -v'
 alias gca='git commit -v -a'
 alias gcam='git commit --amend'
+alias gcf='git diff --name-only | uniq | xargs subl'
 
 # Commit pending changes and quote all args as message
 function gg() {
     git commit -v -a -m "$*"
+}
+
+# Commit pending changes and quote all args as message without add
+function gc() {
+    git commit -v -m "$*"
 }
 
 # As above, except don't add
@@ -48,6 +52,11 @@ alias gps='git push'
 alias gpf='git push -f'
 alias gf='git fetch'
 
+alias gr='git rebase'
+alias grc='git rebase --continue'
+alias grs='git rebase --skip'
+alias gra='git rebase --abort'
+
 alias gst='git st'
 alias gt='git st'
 alias g='git st'
@@ -63,10 +72,18 @@ alias grm='git rm'
 
 #Git stash
 alias gsl='git stash list'
-alias gssh='git stash show'
+
 alias gsd='git stash drop'
 alias gsp='git stash pop'
 alias gss='git stash save'
+
+function gsw() {
+	if [ -z "$1" ]; then
+		git stash show stash@{0} -p
+	else
+		git stash show stash@{$1} -p
+	fi
+}
 
 function hadouken() {
 	if [ -z "$2" ]; then
@@ -105,7 +122,16 @@ function new-git() {
   git config push.default current
 }
 
-function grba() {
-	git branch -d $1
-	git push origin :$1
+# http://stackoverflow.com/a/2003515
+function gbd() {
+  git push origin --delete $1
+  git branch -d $1
+}
+
+function gfind() {
+	git rev-list -n 1 HEAD -- $1
+}
+
+function grestore() {
+	git checkout $(gfind $1)^ -- $1
 }
